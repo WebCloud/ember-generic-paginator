@@ -58,7 +58,7 @@ export default Ember.ArrayController.extend(Paginated, {
 ## Fixtures in use...
 
 The PaginationBase route assumes that you will have the application adapter using fixtures.
-So if you want that your fixtures are able to paginate see how it is being done in (blob/master/app/adapters/application.js)[https://github.com/WebCloud/ember-generic-paginator/blob/master/app/adapters/application.js]. If your backend already supports pagination,
+So if you want that your fixtures are able to paginate see how it is being done in [/blob/master/app/adapters/application.js](/blob/master/app/adapters/application.js). If your backend already supports pagination,
 just remove the following code from the PaginationBase route:
 
 ```javascript
