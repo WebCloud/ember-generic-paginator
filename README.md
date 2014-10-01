@@ -10,7 +10,10 @@ Also initiate your route calling _super with the intended model name to
 be fetched and paginated.
 
 ```javascript
-import PaginationBase from '../pagination-base';
+// please note that the path for the pagination dependency might be different
+// according with the folder that the dependency will be requested from
+// this assumes that the file is in the routes/ folder
+import PaginationBase from './pagination-base';
 
 export default PaginationBase.extend({
   init: function(){
@@ -39,7 +42,10 @@ Also, create the total computed property for total, to be used to calculate the
 total number of pages for your model data.
 
 ```javascript
-import Paginated from '../../mixins/paginated';
+// please note that the path for the pagination dependency might be different
+// according with the folder that the dependency will be requested from
+// this assumes that the file is in the controllers/ folder
+import Paginated from '../mixins/paginated';
 
 export default Ember.ArrayController.extend(Paginated, {
   total: function(){
