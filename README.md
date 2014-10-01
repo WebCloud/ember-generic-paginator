@@ -12,7 +12,7 @@ be fetched and paginated.
 ```javascript
 // please note that the path for the pagination dependency might be different
 // according with the folder that the dependency will be requested from
-// this assumes that the file is in the routes/ folder
+// this assumes that this file is in the routes/ folder
 import PaginationBase from './pagination-base';
 
 export default PaginationBase.extend({
@@ -44,7 +44,7 @@ total number of pages for your model data.
 ```javascript
 // please note that the path for the pagination dependency might be different
 // according with the folder that the dependency will be requested from
-// this assumes that the file is in the controllers/ folder
+// this assumes that this file is in the controllers/ folder
 import Paginated from '../mixins/paginated';
 
 export default Ember.ArrayController.extend(Paginated, {
