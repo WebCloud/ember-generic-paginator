@@ -1,8 +1,52 @@
-# Generic-pagination
+# Generic Ember pagination
 
-This README outlines the details of collaborating on this Ember application.
+This is a regular ember-cli applicaiton, so all the goodies applies.
 
-A short introduction of this app could easily go here.
+To use the generic pagination helper you must do the following steps.
+
+### Extend your route from the PaginatedBase object
+
+Also initiate your route calling _super with the intended model name to
+be fetched and paginated.
+
+```javascript
+import PaginationBase from '../pagination-base';
+
+PaginationBase.extend({
+  init: function(){
+    this._super('myModelName');
+  }
+  // continuation of your route
+});
+```
+
+Note that with that you will not need to create the `model` hook yourself, but
+if you need to extend it for some reason just call _super and receive the return of that.
+Like so:
+
+```javascript
+  mode: function(){
+    myModel = this._super();
+    // my extra logic
+
+    return myModel;
+  }
+```
+
+### Use the Paginated mixin in your controller
+
+Also, create the total computed property for total, to be used to calculate the
+total number of pages for your model data.
+
+```javascript
+import Paginated from '../../mixins/paginated';
+Ember.ArrayController.extend(Paginated, {
+  total: function(){
+    return this.store.metadataFor('yourModelName').total;
+  }.property('model'),
+  // continuation of your controller
+});
+```
 
 ## Prerequisites
 
@@ -22,30 +66,3 @@ You will need the following things properly installed on your computer.
 
 * `ember server`
 * Visit your app at http://localhost:4200.
-
-### Code Generators
-
-Make use of the many generators for code, try `ember help generate` for more details
-
-### Running Tests
-
-* `ember test`
-* `ember test --server`
-
-### Building
-
-* `ember build` (development)
-* `ember build --environment production` (production)
-
-### Deploying
-
-Specify what it takes to deploy your app.
-
-## Further Reading / Useful Links
-
-* ember: http://emberjs.com/
-* ember-cli: http://www.ember-cli.com/
-* Development Browser Extensions
-  * [ember inspector for chrome](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi)
-  * [ember inspector for firefox](https://addons.mozilla.org/en-US/firefox/addon/ember-inspector/)
-

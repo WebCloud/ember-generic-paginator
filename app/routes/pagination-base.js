@@ -1,10 +1,13 @@
 /*
   Use this base object to whatever route needs pagination
   to set it up just customise your init function to look like this:
-  init: ()->
+  init: function(){
     this._super('mydomain');
-  to later retrive the model data on the controller for the route
-  simply do model.data
+  }
+  That will paginate your data and return the list to the model for your controller
+
+  If you happen to need to extend the model hook, just remember to call this._super()
+  like myModel = this.super()
 */
 
 import Ember from 'ember';
