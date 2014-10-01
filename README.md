@@ -12,7 +12,7 @@ be fetched and paginated.
 ```javascript
 import PaginationBase from '../pagination-base';
 
-PaginationBase.extend({
+export default PaginationBase.extend({
   init: function(){
     this._super('myModelName');
   }
@@ -25,7 +25,7 @@ if you need to extend it for some reason just call _super and receive the return
 Like so:
 
 ```javascript
-  mode: function(){
+  model: function(){
     myModel = this._super();
     // my extra logic
 
@@ -40,7 +40,8 @@ total number of pages for your model data.
 
 ```javascript
 import Paginated from '../../mixins/paginated';
-Ember.ArrayController.extend(Paginated, {
+
+export default Ember.ArrayController.extend(Paginated, {
   total: function(){
     return this.store.metadataFor('yourModelName').total;
   }.property('model'),
