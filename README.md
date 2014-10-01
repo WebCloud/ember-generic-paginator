@@ -55,6 +55,27 @@ export default Ember.ArrayController.extend(Paginated, {
 });
 ```
 
+## Fixtures in use...
+
+The PaginationBase route assumes that you will have the application adapter using fixtures.
+So if you want that your fixtures are able to paginate see how it is being done in (blob/master/app/adapters/application.js)[/blob/master/app/adapters/application.js]. If your backend already supports pagination,
+just remove the following code from the PaginationBase route:
+
+```javascript
+    // Set's the metaForType manually, on your backend api you would have it
+    // like it's documented: http://emberjs.com/guides/models/handling-metadata/
+    // once you have the api in place just remove this bit
+    this.store.find(this.get('domain')).then(function(that){
+      return function(completeList){
+        that.store.metaForType(that.get('domain'), {total:completeList.get('length')});
+      };
+    }(this));
+```
+
+If you are going to build your backend pagination to be used here, please head on to http://emberjs.com/guides/models/handling-metadata/ and http://emberjs.com/guides/models/the-rest-adapter/
+to make sure your response follows the expected format. Another resource when building JSON APIs: http://jsonapi.org/
+
+
 ## Prerequisites
 
 You will need the following things properly installed on your computer.
