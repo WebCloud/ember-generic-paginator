@@ -1,4 +1,4 @@
-import PaginationBase from '../pagination-base';
+import PaginationBase from './pagination-base';
 
 export default PaginationBase.extend({
   init: function(){
